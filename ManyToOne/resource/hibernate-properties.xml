@@ -1,0 +1,32 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+	
+	<!-- connect to your database -->
+		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="connection.url">jdbc:oracle:thin:@oracle.cv9u7djpxtb4.us-east-1.rds.amazonaws.com:1521:orcl</property>
+		<property name="connection.username">admin</property>
+		<property name="connection.password">oracle123</property>
+		
+	<!-- do you want hibernate to create/ alter your schema : hbm2ddl.auto
+		If user table does not exist, should hibernate create it?  drop -> create
+		If user table exist but with diff cols/schema, do u want it to be updated: update
+		If user table exist with diff schema, u want it to throw an error: validate
+		If u want the user table to be created when u run ur code, and deleted after ur code is done: create-drop
+	-->
+	
+		<property name="hbm2ddl.auto">create</property>
+		<!-- //Entity -->
+		
+		<property name="show_sql">true</property>
+		
+		<!-- session.save: hibernate will create query for u, hbm2ddl.auto:create, hibernate will create query for u -->
+		<!-- which language/database to generate ur query -->
+		<property name="dialect">org.hibernate.dialect.OracleDialect</property>
+		<mapping class="com.java.practice5.Passport"/>
+		<mapping class="com.java.practice5.Citizen"/>
+	</session-factory>
+</hibernate-configuration>
